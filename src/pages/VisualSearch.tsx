@@ -6,7 +6,7 @@ export default function VisualSearch() {
 
   return (
     <div className="bg-surface text-on-surface font-body-main antialiased min-h-screen flex flex-col items-center pb-24">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
+      <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
         <div className="relative flex justify-between items-center px-4 h-14 w-full max-w-[1200px] mx-auto">
           <button aria-label="Close" className="relative z-10 text-primary hover:opacity-80 transition-opacity p-2 -ml-2" onClick={() => navigate(-1)}>
             <span className="material-symbols-outlined text-[24px]">close</span>

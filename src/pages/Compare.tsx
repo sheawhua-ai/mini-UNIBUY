@@ -6,7 +6,7 @@ export default function Compare() {
 
   return (
     <div className="antialiased pb-[120px] font-body-main text-[16px] bg-surface text-on-surface min-h-screen">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline transition-transform duration-200">
+      <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline transition-transform duration-200">
         <div className="relative flex justify-between items-center px-4 h-14 w-full max-w-7xl mx-auto">
           <button className="relative z-10 text-primary hover:opacity-80 transition-opacity flex items-center justify-center p-2 -ml-2" onClick={() => navigate(-1)}>
             <span className="material-symbols-outlined text-[24px]">arrow_back</span>

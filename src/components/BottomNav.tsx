@@ -12,7 +12,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full z-50 pb-safe bg-pure-white border-t border-hairline flex justify-around items-center h-[56px] px-4 shadow-[0_-4px_24px_rgba(0,0,0,0.02)]">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 pb-safe bg-pure-white border-t border-hairline flex justify-around items-center h-[56px] px-4 shadow-[0_-4px_24px_rgba(0,0,0,0.02)]">
       {tabs.map(tab => {
         const isActive = location.pathname === tab.path;
         return (

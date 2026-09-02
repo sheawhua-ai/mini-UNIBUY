@@ -6,7 +6,7 @@ export default function PrivateCuration() {
 
   return (
     <div className="font-body-main antialiased pb-[100px] pt-[80px] bg-background text-on-surface min-h-screen">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
+      <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
         <div className="relative flex justify-between items-center px-4 h-14 w-full max-w-7xl mx-auto">
           <button className="relative z-10 flex items-center text-primary hover:opacity-80 transition-opacity cursor-pointer p-2 -ml-2" onClick={() => navigate(-1)}>
             <span className="material-symbols-outlined text-[24px]">arrow_back</span>

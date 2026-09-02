@@ -6,7 +6,7 @@ export default function DynamicResults() {
 
   return (
     <div className="bg-surface text-on-surface antialiased font-body-main min-h-screen pb-24">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
+      <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
         <div className="flex flex-col px-4 pt-3 pb-2 w-full max-w-7xl mx-auto">
           <div className="relative flex justify-between items-center mb-3 h-10">
             <button onClick={() => navigate(-1)} className="relative z-10 text-primary hover:opacity-80 transition-opacity p-2 -ml-2">

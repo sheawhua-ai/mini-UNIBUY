@@ -7,7 +7,7 @@ export default function Explore() {
 
   return (
     <div className="bg-surface text-on-surface font-body-main antialiased min-h-screen pb-24">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
+      <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-hairline">
         <div className="relative flex justify-between items-center px-4 h-14 w-full max-w-7xl mx-auto">
           <button className="relative z-10 flex items-center justify-center p-2 -ml-2 text-primary hover:opacity-80 transition-opacity" onClick={() => navigate(-1)}>
             <span className="material-symbols-outlined text-[24px]">arrow_back</span>
