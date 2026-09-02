@@ -69,10 +69,7 @@ export default function VisualSearch() {
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-[#111111]/95 backdrop-blur-xl border-t border-white/10 px-4 py-4 flex flex-col gap-3 pb-safe">
         <div className="relative w-full h-[48px] bg-white/5 border border-white/20 rounded-sm flex items-center px-4 focus-within:border-white/40 transition-colors">
           <span className="text-[12px] text-[#F7F7F5] font-bold mr-3 uppercase tracking-widest">AI</span>
-          <input className="w-full bg-transparent border-none p-0 focus:ring-0 text-[14px] text-[#F7F7F5] placeholder:text-white/40 outline-none font-light" placeholder="添加描述以缩小范围..." type="text" defaultValue="像这个，但要黑色、预算 2 万以内"/>
-          <button className="ml-2 text-white/60 hover:text-[#F7F7F5] transition-colors">
-            <span className="material-symbols-outlined text-[20px] font-light">mic</span>
-          </button>
+          <input className="w-full bg-transparent border-none p-0 pr-2 focus:ring-0 text-[14px] text-[#F7F7F5] placeholder:text-white/40 outline-none font-light" placeholder="添加描述以缩小范围..." type="text" defaultValue="像这个，但要黑色、预算 2 万以内"/>
         </div>
         <button onClick={() => navigate('/results')} className="w-full h-[48px] bg-[#F7F7F5] text-[#111111] font-medium text-[14px] rounded-sm hover:bg-[#F7F7F5]/90 transition-colors flex items-center justify-center gap-2">
           查看相似商品

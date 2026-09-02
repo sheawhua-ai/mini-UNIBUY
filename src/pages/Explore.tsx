@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
+import AIFab from '../components/AIFab';
 
 export default function Explore() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export default function Explore() {
   }, []);
 
   return (
-    <div className="bg-[#F7F7F5] text-[#111111] font-sans antialiased min-h-screen pb-32">
+    <div className="bg-[#F7F7F5] text-[#111111] font-sans antialiased min-h-screen pb-24">
       <header className={`fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 transition-colors duration-300 ${scrolled ? 'bg-[#FFFFFF]/90 backdrop-blur-xl border-b border-[#E4E3DE]' : 'bg-[#F7F7F5]'}`}>
         <div className="relative flex justify-between items-center px-4 h-14 w-full">
           <button className="relative z-10 flex items-center justify-center p-2 -ml-2 text-[#111111] hover:opacity-80 transition-opacity" onClick={() => navigate(-1)}>
@@ -35,7 +35,7 @@ export default function Explore() {
         <section className="px-4">
           <div className="flex items-center gap-4 mb-6 mt-2 border-b border-[#E4E3DE] pb-2">
             <button className="text-[14px] font-medium text-[#111111] border-b-2 border-[#111111] pb-2">分类浏览</button>
-            <button className="text-[14px] text-[#666663] pb-2" onClick={() => navigate('/intent')}>意图找货</button>
+            <button className="text-[14px] text-[#666663] pb-2" onClick={() => navigate('/private')}>私人精选</button>
           </div>
           
           <div className="grid grid-cols-2 gap-3">
@@ -98,32 +98,7 @@ export default function Explore() {
         </section>
       </main>
 
-      {/* Floating AI Intent Input Bar - Above Bottom Nav */}
-      <div className="fixed bottom-[80px] left-1/2 -translate-x-1/2 max-w-[430px] w-full z-40 px-4 pointer-events-none pb-safe">
-        <div 
-          className="bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#E4E3DE] h-[52px] shadow-[0_8px_32px_rgba(0,0,0,0.10)] flex items-center px-4 pointer-events-auto cursor-text rounded-sm"
-          onClick={() => navigate('/intent')}
-        >
-          <span className="text-[12px] text-[#111111] font-bold mr-3 uppercase tracking-widest">AI</span>
-          <div className="w-full bg-transparent text-[14px] text-[#666663] flex-1 overflow-hidden whitespace-nowrap text-ellipsis font-light">
-            输入或描述您在寻找的...
-          </div>
-          <div className="flex items-center gap-3 text-[#111111] ml-2">
-            <button className="hover:opacity-80 flex items-center"><span className="material-symbols-outlined text-[20px] font-light">mic</span></button>
-            <div className="w-[1px] h-4 bg-[#E4E3DE]"></div>
-            <button 
-              className="hover:opacity-80 flex items-center" 
-              onClick={(e) => { 
-                e.stopPropagation(); 
-                navigate('/visual-search'); 
-              }}
-            >
-              <span className="material-symbols-outlined text-[20px] font-light">lens_camera</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
+      <AIFab />
       <BottomNav />
     </div>
   );

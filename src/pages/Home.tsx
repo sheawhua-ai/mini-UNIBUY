@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
+import AIFab from '../components/AIFab';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen pb-32 overflow-x-hidden bg-[#F7F7F5] text-[#111111] font-sans">
-      {/* TopAppBar - Transparent to Solid */}
+    <div className="relative min-h-screen pb-24 overflow-x-hidden bg-[#F7F7F5] text-[#111111] font-sans">
       <header className={`fixed top-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 transition-colors duration-300 ${scrolled ? 'bg-[#FFFFFF]/90 backdrop-blur-xl border-b border-[#E4E3DE]' : 'bg-transparent'}`}>
         <div className="relative flex justify-between items-center px-4 h-14 w-full">
           <button aria-label="Menu" className={`relative z-10 hover:opacity-80 transition-transform active:scale-95 duration-200 p-2 -ml-2 ${scrolled ? 'text-[#111111]' : 'text-white'}`}>
@@ -50,25 +49,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Quick Links / Categories */}
-        <section className="px-5 py-12 grid grid-cols-4 gap-4 bg-[#FFFFFF]">
-           {[
-             { name: '随心逛', icon: 'explore', path: '/explore' },
-             { name: '私人精选', icon: 'diamond', path: '/private' },
-             { name: '视觉搜索', icon: 'image_search', path: '/visual-search' },
-             { name: '会员中心', icon: 'workspace_premium', path: '/member' }
-           ].map((item, i) => (
-             <div key={i} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => navigate(item.path)}>
-                <div className="w-12 h-12 rounded-sm bg-[#F7F7F5] border border-[#E4E3DE] group-hover:bg-[#EFEFEB] transition-colors flex items-center justify-center text-[#111111]">
-                  <span className="material-symbols-outlined text-[24px] font-light">{item.icon}</span>
+        {/* Editorial Topics (Replaces redundant 4-icon grid) */}
+        <section className="px-5 py-8 bg-[#FFFFFF] border-b border-[#E4E3DE]">
+          <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+            {[
+              { label: '新季成衣', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=300' },
+              { label: '极简手袋', img: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&q=80&w=300' },
+              { label: '私享珠宝', img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=300' }
+            ].map((topic, i) => (
+              <div key={i} className="flex-none w-32 group cursor-pointer" onClick={() => navigate('/explore')}>
+                <div className="aspect-[4/5] overflow-hidden rounded-sm mb-2">
+                  <img src={topic.img} alt={topic.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
-                <span className="text-[12px] font-medium text-[#666663]">{item.name}</span>
-             </div>
-           ))}
+                <p className="text-[12px] font-medium text-[#111111] tracking-widest">{topic.label}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Curated Editorial Product Grid */}
-        <section className="px-5 py-8 bg-[#F7F7F5]">
+        <section className="px-5 py-10 bg-[#F7F7F5]">
           <div className="flex justify-between items-end mb-6">
             <div>
               <span className="text-[11px] text-[#666663] uppercase tracking-widest mb-1 block">Curated For You</span>
@@ -103,32 +103,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Floating AI Intent Input Bar - Above Bottom Nav */}
-      <div className="fixed bottom-[80px] left-1/2 -translate-x-1/2 max-w-[430px] w-full z-40 px-4 pointer-events-none pb-safe">
-        <div 
-          className="bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#E4E3DE] h-[52px] shadow-[0_8px_32px_rgba(0,0,0,0.10)] flex items-center px-4 pointer-events-auto cursor-text rounded-sm"
-          onClick={() => navigate('/intent')}
-        >
-          <span className="text-[12px] text-[#111111] font-bold mr-3 uppercase tracking-widest">AI</span>
-          <div className="w-full bg-transparent text-[14px] text-[#666663] flex-1 overflow-hidden whitespace-nowrap text-ellipsis font-light">
-            帮我找适合商务差旅的...
-          </div>
-          <div className="flex items-center gap-3 text-[#111111] ml-2">
-            <button className="hover:opacity-80 flex items-center"><span className="material-symbols-outlined text-[20px] font-light">mic</span></button>
-            <div className="w-[1px] h-4 bg-[#E4E3DE]"></div>
-            <button 
-              className="hover:opacity-80 flex items-center" 
-              onClick={(e) => { 
-                e.stopPropagation(); 
-                navigate('/visual-search'); 
-              }}
-            >
-              <span className="material-symbols-outlined text-[20px] font-light">lens_camera</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
+      <AIFab />
       <BottomNav />
     </div>
   );

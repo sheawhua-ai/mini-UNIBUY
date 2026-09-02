@@ -1,4 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import os
+
+with open('src/pages/IntentCanvas.tsx', 'w') as f:
+    f.write("""import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function IntentCanvas() {
@@ -30,8 +33,8 @@ export default function IntentCanvas() {
       </header>
 
       {/* Chat Area */}
-      <main className="flex-1 overflow-y-auto w-full hide-scrollbar scroll-smooth relative">
-        <div className="max-w-[430px] mx-auto px-4 pt-6 pb-40 flex flex-col gap-6">
+      <main className="flex-1 overflow-y-auto w-full hide-scrollbar">
+        <div className="max-w-[430px] mx-auto px-4 pt-6 pb-32 flex flex-col gap-6">
           
           <div className="text-center text-[11px] text-[#666663] font-mono mb-2 mt-2">
             TODAY 09:41 AM
@@ -115,16 +118,19 @@ export default function IntentCanvas() {
       {/* Input Area (Bottom Fixed) */}
       <div className="absolute bottom-0 left-0 right-0 z-50 bg-[#F7F7F5]/90 backdrop-blur-xl border-t border-[#E4E3DE]">
         <div className="max-w-[430px] mx-auto px-4 py-3 pb-safe">
-          <div className="flex items-end gap-1.5 bg-[#FFFFFF] border border-[#E4E3DE] rounded-sm p-1.5 shadow-sm focus-within:border-[#111111] transition-colors">
-            <button className="p-1.5 pb-2 pl-2 text-[#666663] hover:text-[#111111] transition-colors shrink-0 flex items-center justify-center" onClick={() => navigate('/visual-search')}>
-              <span className="material-symbols-outlined text-[18px] font-light">add_photo_alternate</span>
+          <div className="flex items-end gap-2 bg-[#FFFFFF] border border-[#E4E3DE] rounded-sm p-1.5 shadow-sm focus-within:border-[#111111] transition-colors">
+            <button className="p-2 text-[#666663] hover:text-[#111111] transition-colors shrink-0" onClick={() => navigate('/visual-search')}>
+              <span className="material-symbols-outlined text-[20px] font-light">lens_camera</span>
             </button>
             <textarea 
               className="flex-1 bg-transparent border-none p-0 py-2 focus:ring-0 resize-none font-sans text-[14px] leading-relaxed text-[#111111] placeholder:text-[#666663] outline-none max-h-[100px] min-h-[36px]"
               placeholder="回复 AI..."
               rows={1}
             />
-            <div className="flex items-center shrink-0 pb-0.5 pr-0.5">
+            <div className="flex items-center gap-1 shrink-0 pb-0.5">
+              <button className="p-1.5 text-[#666663] hover:text-[#111111] transition-colors">
+                <span className="material-symbols-outlined text-[20px] font-light">mic</span>
+              </button>
               <button onClick={() => navigate('/results')} className="w-8 h-8 rounded-sm bg-[#111111] text-[#FFFFFF] flex items-center justify-center hover:opacity-90 transition-opacity">
                 <span className="material-symbols-outlined text-[18px]">arrow_upward</span>
               </button>
@@ -138,3 +144,4 @@ export default function IntentCanvas() {
     </div>
   );
 }
+""")
