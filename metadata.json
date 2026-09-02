@@ -1,0 +1,6 @@
+{
+  "name": "LUXE - 高端生活会员平台",
+  "description": "聚合严选奢侈品与高端生活方式权益的会员平台原型，包含AI探索、私人管家及动态商品结果等模块。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
