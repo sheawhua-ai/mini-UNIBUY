@@ -1,4 +1,6 @@
+import sys
 
+content = """
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
@@ -133,3 +135,6 @@ export default function Home() {
     </div>
   );
 }
+"""
+with open('src/pages/Home.tsx', 'w') as f:
+    f.write(content)

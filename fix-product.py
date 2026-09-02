@@ -1,4 +1,6 @@
+import sys
 
+content = """
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -125,3 +127,6 @@ export default function ProductDetail() {
     </div>
   );
 }
+"""
+with open('src/pages/ProductDetail.tsx', 'w') as f:
+    f.write(content)
