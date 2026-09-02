@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MobileFrame from './components/MobileFrame';
+
 import Home from './pages/Home';
 import PrivateCuration from './pages/PrivateCuration';
 import IntentCanvas from './pages/IntentCanvas';

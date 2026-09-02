@@ -50,8 +50,8 @@ export default function IntentCanvas() {
               <span className="material-symbols-outlined text-[16px] text-[#111111]">psychiatry</span>
             </div>
             
-            <div className="bg-[#FFFFFF] border border-[#E4E3DE] p-4 rounded-sm shadow-sm w-full">
-              <p className="text-[14px] leading-relaxed mb-4 text-[#111111]">
+            <div className="bg-[#FFFFFF] border border-[#E4E3DE] py-4 rounded-sm shadow-sm w-full overflow-hidden">
+              <p className="px-4 text-[14px] leading-relaxed mb-4 text-[#111111]">
                 已为您筛选出 12 件符合要求的单品。提取属性：<br/>
                 <span className="inline-flex items-center gap-1 text-[11px] font-mono bg-[#F7F7F5] px-1.5 py-0.5 mt-2 mr-2 border border-[#E4E3DE] rounded-sm">东京差旅</span>
                 <span className="inline-flex items-center gap-1 text-[11px] font-mono bg-[#F7F7F5] px-1.5 py-0.5 mt-2 mr-2 border border-[#E4E3DE] rounded-sm">13英寸电脑</span>
@@ -61,7 +61,7 @@ export default function IntentCanvas() {
               </p>
 
               {/* Rich Component: Product Carousel */}
-              <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-4 mb-2 -mx-4 px-4 snap-x">
+              <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-4 mb-2 px-4 snap-x">
                 <div className="w-[140px] shrink-0 snap-center cursor-pointer group" onClick={() => navigate('/product')}>
                   <div className="w-full aspect-[4/5] bg-[#EFEFEB] rounded-sm overflow-hidden mb-2 relative">
                     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDky0km-Mff6UbX7pS3nRRlvZ-WCm8QtYE5jEwt6tk_m0_-KqtkINhD5Xvbhff0HxO1fYTJSXxhCnY11wtOf-7TMiiAD7pvI-2oXzAIVWTTVlh4GNF0drfE0VIjcRTZsJuvXHb_KgTMAy3q2oQBxNEIM-0XsIbp9pPvaFYZ_khYyg1VykTUibem34dsPc1x4GTcsragr9ZnGdvu-2emHV0dOBBW3wcbRiJ8zk2_u60WQW5EqNj3VByw" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Noir Tote" />
@@ -94,8 +94,8 @@ export default function IntentCanvas() {
               <div className="w-full h-[1px] bg-[#E4E3DE] mb-4"></div>
 
               {/* Follow up actions */}
-              <p className="text-[13px] text-[#111111] mb-3">为进一步缩小范围，您更看重：</p>
-              <div className="flex flex-col gap-2">
+              <p className="px-4 text-[13px] text-[#111111] mb-3">为进一步缩小范围，您更看重：</p>
+              <div className="px-4 flex flex-col gap-2">
                 <button onClick={() => navigate('/results')} className="py-2.5 px-3 border border-[#E4E3DE] rounded-sm hover:bg-[#F7F7F5] transition-colors text-left flex justify-between items-center group">
                   <span className="text-[13px] text-[#111111]">极致轻便 (尼龙/帆布)</span>
                   <span className="material-symbols-outlined text-[16px] text-[#666663] group-hover:text-[#111111]">arrow_forward</span>
