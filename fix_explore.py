@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import os
+
+explore_content = """import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
 import AIFab from '../components/AIFab';
@@ -103,8 +105,10 @@ export default function Explore() {
             <span className="material-symbols-outlined text-[24px]">arrow_back</span>
           </button>
           <h1 className="font-serif text-[18px] tracking-widest absolute left-1/2 -translate-x-1/2 font-bold pointer-events-none">EXPLORE</h1>
-          <div className="relative z-10 flex items-center gap-2 w-10">
-            {/* Empty space to balance the back button */}
+          <div className="relative z-10 flex items-center gap-2">
+            <button className="flex flex-col items-center justify-center p-2 text-[#111111] hover:opacity-80 transition-opacity" onClick={() => navigate('/visual-search')}>
+              <span className="material-symbols-outlined text-[20px]">center_focus_strong</span>
+            </button>
           </div>
         </div>
         
@@ -248,3 +252,7 @@ export default function Explore() {
     </div>
   );
 }
+"""
+
+with open('src/pages/Explore.tsx', 'w') as f:
+    f.write(explore_content)

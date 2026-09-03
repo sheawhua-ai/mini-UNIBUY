@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 export default function ProductDetail() {
   const navigate = useNavigate();
@@ -21,9 +22,31 @@ export default function ProductDetail() {
     desc: '经典倒梯形托特包，采用细腻光泽的全粒面小牛皮制成。顶部搭扣开合，侧边束带设计。宽敞的内部空间足够收纳您的日常所需。'
   };
 
-  const [selectedColor, setSelectedColor] = useState(product.skus.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.skus.sizes[0]);
-  const [selectedFulfillment, setSelectedFulfillment] = useState(product.fulfillments[0]);
+  // Safe fallbacks to handle legacy state objects in browser history
+  const productColors = product?.skus?.colors || ['黑色'];
+  const productSizes = product?.skus?.sizes || ['默认'];
+  const productFulfillments = product?.fulfillments || [
+    { id: 'def', label: '标准发货', price: product?.price || '¥0', eta: '预计 3-5 工作日', icon: 'local_shipping' }
+  ];
+
+  const [selectedColor, setSelectedColor] = useState(productColors[0]);
+  const [selectedSize, setSelectedSize] = useState(productSizes[0]);
+  const [selectedFulfillment, setSelectedFulfillment] = useState(productFulfillments[0]);
+  
+  const { addToCart } = useCart();
+  const [showToast, setShowToast] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart({
+      product,
+      color: selectedColor,
+      size: selectedSize,
+      fulfillment: selectedFulfillment,
+      quantity: 1
+    });
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
 
   return (
     <div className="bg-[#FFFFFF] text-[#111111] font-sans antialiased min-h-screen pb-[100px]">
@@ -66,7 +89,7 @@ export default function ProductDetail() {
             <span className="text-[13px] font-medium text-[#111111]">发货版本 <span className="text-[#666663] font-normal ml-1">不同产地价格可能浮动</span></span>
           </div>
           <div className="flex flex-col gap-2.5">
-            {product.fulfillments.map((f: any, i: number) => (
+            {productFulfillments.map((f: any, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setSelectedFulfillment(f)}
@@ -93,7 +116,7 @@ export default function ProductDetail() {
             <span className="text-[13px] font-medium text-[#111111]">颜色: <span className="text-[#666663] font-normal">{selectedColor}</span></span>
           </div>
           <div className="flex flex-wrap gap-2.5">
-            {product.skus.colors.map((c: string, i: number) => (
+            {productColors.map((c: string, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setSelectedColor(c)}
@@ -112,7 +135,7 @@ export default function ProductDetail() {
             <button className="text-[11px] text-[#666663] underline underline-offset-2">尺码指南</button>
           </div>
           <div className="flex flex-wrap gap-2">
-            {product.skus.sizes.map((s: string, i: number) => (
+            {productSizes.map((s: string, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setSelectedSize(s)}
@@ -172,13 +195,19 @@ export default function ProductDetail() {
 
       {/* Fixed Bottom Action Bar */}
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[430px] w-full z-50 bg-[#FFFFFF] border-t border-[#E4E3DE] px-4 py-3 flex items-center gap-3 pb-safe shadow-[0_-4px_16px_rgba(0,0,0,0.04)]">
-        <button className="flex-1 h-[48px] border border-[#111111] text-[#111111] font-medium text-[14px] rounded-sm flex items-center justify-center hover:bg-[#F7F7F5] transition-colors">
+        <button onClick={handleAddToCart} className="flex-1 h-[48px] border border-[#111111] text-[#111111] font-medium text-[14px] rounded-sm flex items-center justify-center hover:bg-[#F7F7F5] transition-colors">
           加入购物袋
         </button>
-        <button className="flex-1 h-[48px] bg-[#111111] text-[#FFFFFF] font-medium text-[14px] rounded-sm flex items-center justify-center hover:opacity-90 transition-opacity">
+        <button onClick={() => { handleAddToCart(); navigate('/cart'); }} className="flex-1 h-[48px] bg-[#111111] text-[#FFFFFF] font-medium text-[14px] rounded-sm flex items-center justify-center hover:opacity-90 transition-opacity">
           立即购买
         </button>
       </div>
+
+      {showToast && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-[60] bg-[#111111] text-[#FFFFFF] px-6 py-3 rounded-sm shadow-xl text-[13px] font-medium animate-in slide-in-from-top-4 fade-in duration-300">
+          商品已成功加入购物袋
+        </div>
+      )}
     </div>
   );
 }

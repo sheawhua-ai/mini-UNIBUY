@@ -1,4 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import os
+import re
+
+with open('src/pages/Home.tsx', 'r') as f:
+    home_content = f.read()
+
+# Just recreate Home.tsx cleanly.
+new_home = """import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
 import AIFab from '../components/AIFab';
@@ -142,3 +149,7 @@ export default function Home() {
     </div>
   );
 }
+"""
+
+with open('src/pages/Home.tsx', 'w') as f:
+    f.write(new_home)
